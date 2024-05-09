@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  release:
+    types: released
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set var of release version 
+        run: |
+          echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
+
+      - name: Set var of request header
+        run: |
+          echo ::set-env name=REQUEST_HEADER::"'"Accept:application/vnd.github.everest-preview+json"'"
+
+      - name: Set var of request body
+        run: |
+          echo ::set-env name=REQUEST_BODY::'{"event_type": "release", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "tag_name": "'"$RELEASE_VERSION"'", "release_name": "Repository Dispatch Test"}}'
+
+      - name: Repository dispatch
+        run: |
+          curl -X POST https://api.github.com/repos/dudutou/skills-publish-packages/dispatches \
+          -H $REQUEST_HEADER \
+          -u ${{ secrets.TEST_REPO_DISP }} \
+          --data "$REQUEST_BODY"
