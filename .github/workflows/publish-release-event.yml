@@ -24,6 +24,6 @@ jobs:
       - name: Repository dispatch
         run: |
           curl -X POST "https://api.github.com/repos/dudutou/skills-publish-packages/dispatches" --http1.1 \
-          -H $REQUEST_HEADER \
-          -u ${{ secrets.TEST_REPO_DISP }} \
-          --data $REQUEST_BODY
+          -H "$REQUEST_HEADER" \
+          -u "dudutou:${{ secrets.TEST_REPO_DISP }}" \
+          --data "$REQUEST_BODY"
