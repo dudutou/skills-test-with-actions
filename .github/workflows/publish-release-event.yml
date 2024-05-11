@@ -10,15 +10,15 @@ jobs:
     steps:
       - name: Set var of release version 
         run: |
-          echo ::set-env name=RELEASE_VERSION::${GITHUB_REF#refs/*/}
+          echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Set var of request header
         run: |
-          echo ::set-env name=REQUEST_HEADER::"'"Accept:application/vnd.github.everest-preview+json"'"
+          echo "REQUEST_HEADER="'"Accept:application/vnd.github.everest-preview+json"'"" >> $GITHUB_ENV
 
       - name: Set var of request body
         run: |
-          echo ::set-env name=REQUEST_BODY::'{"event_type": "release", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "tag_name": "'"$RELEASE_VERSION"'", "release_name": "Repository Dispatch Test"}}'
+          echo "REQUEST_BODY='{"event_type": "release", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "tag_name": "'"$RELEASE_VERSION"'", "release_name": "Repository Dispatch Test"}}'" >> $GITHUB_ENV 
 
       - name: Repository dispatch
         run: |
