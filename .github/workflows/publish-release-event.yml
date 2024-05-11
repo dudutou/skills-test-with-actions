@@ -5,7 +5,7 @@ on:
     types: released
 
 jobs:
-  Release:
+  CallOtherRepositoryWorkflow:
     runs-on: ubuntu-latest
     steps:
       - name: Set var of release version 
