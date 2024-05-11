@@ -10,20 +10,19 @@ jobs:
     env:
       REQUEST_HEADER: "Accept:application/vnd.github.everest-preview+json"
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
-      # REQUEST_BODY: "{\"event_type\": \"release\", \"client_payload\": {\"repository\": \"$GITHUB_REPOSITORY\", \"tag_name\": \"$RELEASE_VERSION\", \"release_name\": \"Repository Dispatch Test\"}}"
     steps:
       - name: Set var of request body
         run: |
-          echo "REQUEST_BODY='{\"event_type\": \"release\", \"client_payload\": {\"repository\": \"$GITHUB_REPOSITORY\", \"tag_name\": \"$RELEASE_TAG_NAME\", \"release_name\": \"Repository Dispatch Test\"}}'" >> $GITHUB_ENV 
+          echo "REQUEST_BODY='{ \"event_type\": \"release\", \"client_payload\": { \"repository\": \"$GITHUB_REPOSITORY\", \"tag_name\": \"$RELEASE_TAG_NAME\", \"release_name\": \"Repository Dispatch Test\" } }'" >> $GITHUB_ENV 
       - name: debug variables
         run: |
           echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
-          echo "RELEASE_VERSION: $RELEASE_VERSION"
+          echo "RELEASE_TAG_NAME: $RELEASE_VERSION"
           echo "REQUEST_HEADER: $REQUEST_HEADER"
           echo "REQUEST_BODY: $REQUEST_BODY"
       - name: Repository dispatch
         run: |
           curl -X POST "https://api.github.com/repos/dudutou/skills-publish-packages/dispatches" --http1.1 \
           -H $REQUEST_HEADER \
-          -u dudutou:${{ secrets.TEST_REPO_DISP }} \
-          --data $REQUEST_BODY
+          -u ${{ secrets.TEST_REPO_DISP }} \
+          -d $REQUEST_BODY
