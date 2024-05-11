@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REQUEST_HEADER: "Accept:application/vnd.github.everest-preview+json"
-      # REQUEST_BODY: '{"event_type": "release", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'", "tag_name": "'"$RELEASE_VERSION"'", "release_name": "Repository Dispatch Test"}}'
+      REQUEST_BODY: "{\"event_type\": \"release\", \"client_payload\": {\"repository\": \"$GITHUB_REPOSITORY\", \"tag_name\": \"$RELEASE_VERSION\", \"release_name\": \"Repository Dispatch Test\"}}"
     steps:
       - name: debug variables
         run: |
