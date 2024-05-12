@@ -3,6 +3,10 @@ name: Release
 on:
   release:
     types: released
+  workflow_dispatch:
+
+env:
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
   CallOtherRepositoryWorkflow:
