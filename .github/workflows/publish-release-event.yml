@@ -29,4 +29,4 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             /repos/dudutou/skills-publish-packages/dispatches \
-             -f "event_type=release" -F "client_payload[repository]=dudutou/skills-test-with-actions" -F "client_payload[tag_name]=20240611.0.18"
+             -f "event_type=release" -F "client_payload[repository]=$GITHUB_REPOSITORY" -F "client_payload[tag_name]=$RELEASE_TAG_NAME"
