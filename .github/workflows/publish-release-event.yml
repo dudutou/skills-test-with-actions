@@ -25,4 +25,4 @@ jobs:
           curl -X POST "https://api.github.com/repos/dudutou/skills-publish-packages/dispatches" --http1.1 \
           -H $REQUEST_HEADER \
           -u ${{ secrets.TEST_REPO_DISP }} \
-          -d $REQUEST_BODY
+          -d '{ "event_type": "release", "client_payload": { "repository": "dudutou/skills-test-with-actions", "tag_name": "20240611.0.18", "release_name": "Repository Dispatch Test" } }'
