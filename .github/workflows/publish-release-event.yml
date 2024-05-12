@@ -5,15 +5,13 @@ on:
     types: released
   workflow_dispatch:
 
-env:
-  GH_TOKEN: ${{ github.token }}
-
 jobs:
   CallOtherRepositoryWorkflow:
     runs-on: ubuntu-latest
     env:
       REQUEST_HEADER: "Accept:application/vnd.github.everest-preview+json"
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+      GH_TOKEN: ${{ secrets.TEST_REPO_DISP }}
     steps:
       - name: Set var of request body
         run: |
