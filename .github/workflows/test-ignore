@@ -1,5 +1,5 @@
 
-name: test inluding and excluding
+name: test including and excluding
 
 # Controls when the workflow will run
 on:
@@ -20,3 +20,5 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: my-step
+      run: echo "Hello World!"
