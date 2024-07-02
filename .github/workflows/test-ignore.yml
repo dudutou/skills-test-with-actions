@@ -6,8 +6,8 @@ on:
   pull_request:
     paths:
     - 'animal/**'
-    - '!animal/cat/**'
     - 'README.md'
+    - '!animal/cat/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
