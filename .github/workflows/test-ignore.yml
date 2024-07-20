@@ -5,7 +5,6 @@ name: test including and excluding
 on:
   pull_request:
     paths:
-    - 'README.md'
     - '!animal/dog/**'
     - 'animal/dog/shibainu/**'
     
