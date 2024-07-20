@@ -7,8 +7,8 @@ on:
     paths:
     - 'animal/**'
     - 'animal/dog/shibainu/**'
-    - '!animal/dog/**'
     - 'README.md'
+    - '!animal/dog/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
