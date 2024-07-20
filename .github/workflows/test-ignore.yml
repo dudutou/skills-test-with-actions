@@ -6,8 +6,8 @@ on:
   pull_request:
     paths:
     - 'animal/**'
-    - '!animal/dog/**'
     - 'animal/dog/shibainu/**'
+    - '!animal/dog/**'
     - 'README.md'
 
   # Allows you to run this workflow manually from the Actions tab
